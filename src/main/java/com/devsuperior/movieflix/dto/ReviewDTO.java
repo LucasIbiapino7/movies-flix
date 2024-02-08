@@ -40,6 +40,15 @@ public class ReviewDTO {
 		userEmail = projection.getEmail();
 	}
 
+	public ReviewDTO(Review entity) {
+		id = entity.getId();
+		text = entity.getText();
+		movieId = entity.getMovie().getId();
+		userId = entity.getUser().getId();
+		userName = entity.getUser().getName();
+		userEmail = entity.getUser().getEmail();
+	}
+
 	public Long getId() {
 		return id;
 	}

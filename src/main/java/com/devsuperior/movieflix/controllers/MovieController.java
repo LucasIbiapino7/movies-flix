@@ -42,6 +42,7 @@ public class MovieController {
         return ResponseEntity.ok(result);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_VISITOR','ROLE_MEMBER')")
     @GetMapping(value = "/{id}/reviews")
     public ResponseEntity<List<ReviewDTO>> findAllReviewsById(@PathVariable Long id){
         List<ReviewDTO> result = reviewService.findAllReviewsById(id);
