@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
@@ -26,4 +27,9 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
                     ") AS tb_result")
     Page<MovieProjection> searchByGenre(List<Long> genreId, Pageable pageable);
 
+    @Query("SELECT obj " +
+            "FROM Movie obj " +
+            "JOIN FETCH obj.genre " +
+            "WHERE obj.id = :id")
+    Optional<Movie> searchMovieWithGenre(Long id);
 }
