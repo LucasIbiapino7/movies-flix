@@ -2,6 +2,7 @@ package com.devsuperior.movieflix.repositories;
 
 import com.devsuperior.movieflix.entities.Genre;
 import com.devsuperior.movieflix.entities.Movie;
+import com.devsuperior.movieflix.entities.Review;
 import com.devsuperior.movieflix.projection.MovieProjection;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,4 +33,5 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
             "JOIN FETCH obj.genre " +
             "WHERE obj.id = :id")
     Optional<Movie> searchMovieWithGenre(Long id);
+
 }
